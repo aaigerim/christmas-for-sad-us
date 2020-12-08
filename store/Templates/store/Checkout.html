@@ -8,10 +8,6 @@
 	<div class="col-lg-6">
 		<div class="box-element" id="form-wrapper">
 
-			<br>
-			<div class="box-element hidden" id="payment-info">
-				<small>Paypal Options</small>
-			</div>
 
 			<form id="form">
 	<div id="user-info">
@@ -65,4 +61,26 @@
 	<h5>Total:   ${{order.get_cart_total|floatformat:2}}</h5>
 </div>
 
+
+			<br>
+			<div class="box-element hidden" id="payment-info">
+				<small>Paypal Options</small>
+				<button id="make-payemnt"> Make Payment</button>
+			</div>
+
+<script type="text/javascript">
+	var shipping = '{{order.shipping}}'
+
+	if (shipping == 'False'){
+	 	document.getElementById('shipping-info').innerHTML = ''
+	}
+
+	var form = document.getElementById('form')
+		form.addEventListener('submit', function(e){
+	    	e.preventDefault()
+	    	console.log('Form Submitted...')
+	    	document.getElementById('form-button').classList.add("hidden");
+	    	document.getElementById('payment-info').classList.remove("hidden");
+	    })
+</script>
 {% endblock content %}
