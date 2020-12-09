@@ -5,6 +5,8 @@ from .models import *
 
 # Create your views here.
 
+
+
 def store(request):
 
 	if request.user.is_authenticated:
